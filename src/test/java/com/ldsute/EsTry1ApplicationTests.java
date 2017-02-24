@@ -27,6 +27,7 @@ public class EsTry1ApplicationTests {
 		rule.setDestPort(80);
 		rule.setSrcIp("4.3.2.1");
 		rule.setSrcPort(1000);
+		rule.setIpProtocol("tcp");
 
 		aclRuleRepository.save(rule);
 	}

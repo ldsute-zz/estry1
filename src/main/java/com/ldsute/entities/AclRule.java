@@ -6,14 +6,15 @@ import org.springframework.data.elasticsearch.annotations.Document;
 /**
  * Created by justin on 2/20/17.
  */
+// http://localhost:9200/aclrule/aclrule/_search
 @Document(indexName = "aclrule", shards = 1, replicas = 0)
 public class AclRule {
     @Id
     private String id;
     private String srcIp;
-    private int srcPort;
+    private Integer srcPort;
     private String destIp;
-    private int destPort;
+    private Integer destPort;
     private String ipProtocol;
 
     public String getId() {
@@ -32,11 +33,11 @@ public class AclRule {
         this.srcIp = srcIp;
     }
 
-    public int getSrcPort() {
+    public Integer getSrcPort() {
         return srcPort;
     }
 
-    public void setSrcPort(int srcPort) {
+    public void setSrcPort(Integer srcPort) {
         this.srcPort = srcPort;
     }
 
@@ -48,11 +49,11 @@ public class AclRule {
         this.destIp = destIp;
     }
 
-    public int getDestPort() {
+    public Integer getDestPort() {
         return destPort;
     }
 
-    public void setDestPort(int destPort) {
+    public void setDestPort(Integer destPort) {
         this.destPort = destPort;
     }
 
@@ -62,5 +63,12 @@ public class AclRule {
 
     public void setIpProtocol(String ipProtocol) {
         this.ipProtocol = ipProtocol;
+    }
+
+    @Override
+    public String toString() {
+        return "AclRule[id=" + getId() + ", proto=" + getIpProtocol() + " | " +
+                getSrcIp() + ":" + getSrcPort() + " -> " +
+                getDestIp() + ":" + getDestPort() + "]";
     }
 }
