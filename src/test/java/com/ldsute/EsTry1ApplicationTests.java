@@ -1,7 +1,8 @@
 package com.ldsute;
 
-import com.ldsute.entities.AclRule;
-import com.ldsute.repositories.AclRuleRepository;
+import com.ldsute.entities.Acl;
+import com.ldsute.entities.Threat;
+import com.ldsute.repositories.ThreatRepository;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -22,12 +23,13 @@ import static java.lang.ClassLoader.getSystemResourceAsStream;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+// Note: with Elasticsearch involved, this really becomes an integration test, not just a unit test.
 public class EsTry1ApplicationTests {
 
 	private static final Logger logger = LoggerFactory.getLogger(EsTry1ApplicationTests.class);
 
 	@Autowired
-	private AclRuleRepository aclRuleRepository;
+	private ThreatRepository threatRepository;
 
 	private static EmbeddedElastic embeddedElastic = null;
 
@@ -37,15 +39,19 @@ public class EsTry1ApplicationTests {
 
 	@Test
 	public void testSave() throws Exception {
-		AclRule rule = new AclRule();
-		rule.setId("yomama");
-		rule.setDestIp("1.2.3.4");
-		rule.setDestPort(80);
-		rule.setSrcIp("4.3.2.1");
-		rule.setSrcPort(1000);
-		rule.setIpProtocol("tcp");
+		Acl acl = new Acl();
+		acl.setDestIp("1.2.3.4");
+		acl.setDestIpMask(32);
+		acl.setDestPort(80);
+		acl.setSrcIp("10.0.0.0");
+		acl.setSrcIpMask(8);
+		acl.setSrcPort(1000);
+		acl.setIpProtocol("tcp");
 
-		aclRuleRepository.save(rule);
+		Threat t = new Threat();
+		t.addAcl(acl);
+
+		threatRepository.save(t);
 	}
 
 	@BeforeClass

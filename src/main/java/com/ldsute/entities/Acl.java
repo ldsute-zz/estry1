@@ -8,22 +8,16 @@ import org.springframework.data.elasticsearch.annotations.Document;
  */
 // http://localhost:9200/aclrule/aclrule/_search
 @Document(indexName = "aclrule", shards = 1, replicas = 0)
-public class AclRule {
+public class Acl {
     @Id
     private String id;
     private String srcIp;
+    private Integer srcIpMask;
     private Integer srcPort;
     private String destIp;
+    private Integer destIpMask;
     private Integer destPort;
     private String ipProtocol;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getSrcIp() {
         return srcIp;
@@ -49,6 +43,22 @@ public class AclRule {
         this.destIp = destIp;
     }
 
+    public Integer getSrcIpMask() {
+        return srcIpMask;
+    }
+
+    public void setSrcIpMask(Integer srcIpMask) {
+        this.srcIpMask = srcIpMask;
+    }
+
+    public Integer getDestIpMask() {
+        return destIpMask;
+    }
+
+    public void setDestIpMask(Integer destIpMask) {
+        this.destIpMask = destIpMask;
+    }
+
     public Integer getDestPort() {
         return destPort;
     }
@@ -67,8 +77,8 @@ public class AclRule {
 
     @Override
     public String toString() {
-        return "AclRule[id=" + getId() + ", proto=" + getIpProtocol() + " | " +
-                getSrcIp() + ":" + getSrcPort() + " -> " +
-                getDestIp() + ":" + getDestPort() + "]";
+        return "Acl[proto=" + getIpProtocol() + " | " +
+                getSrcIp() + "/" + getSrcIpMask() + ":" + getSrcPort() + " -> " +
+                getDestIp() + "/" + getDestIpMask() + ":" + getDestPort() + "]";
     }
 }

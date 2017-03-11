@@ -1,36 +1,29 @@
 package com.ldsute.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ldsute.dto.AclRuleList;
-import com.ldsute.entities.AclRule;
-import com.ldsute.repositories.AclRuleRepository;
+import com.ldsute.dto.ThreatList;
+import com.ldsute.repositories.ThreatRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by justin on 2/22/17.
  */
 @RestController
 @RequestMapping("/aclrules")
-class AclRuleController {
+class ThreatController {
 
-    Logger logger = LoggerFactory.getLogger(AclRuleController.class);
+    Logger logger = LoggerFactory.getLogger(ThreatController.class);
 
     @Autowired
-    private final AclRuleRepository aclRuleRepository = null;
+    private final ThreatRepository threatRepository = null;
 
     @RequestMapping(method = RequestMethod.GET)
-    AclRuleList readAclRules() throws JsonProcessingException {
-        logger.info("Getting the acl rules");
-        return new AclRuleList(this.aclRuleRepository.findAll());
+    ThreatList readThreats() throws JsonProcessingException {
+        logger.info("Getting the threats");
+        return new ThreatList(this.threatRepository.findAll());
     }
 
 //    @RequestMapping(method = RequestMethod.POST)
