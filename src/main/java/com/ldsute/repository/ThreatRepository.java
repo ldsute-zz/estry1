@@ -1,6 +1,6 @@
-package com.ldsute.repositories;
+package com.ldsute.repository;
 
-import com.ldsute.entities.Threat;
+import com.ldsute.entity.Threat;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

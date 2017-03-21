@@ -1,8 +1,8 @@
-package com.ldsute.controllers;
+package com.ldsute.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ldsute.dto.ThreatList;
-import com.ldsute.repositories.ThreatRepository;
+import com.ldsute.repository.ThreatRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
  * Created by justin on 2/22/17.
  */
 @RestController
-@RequestMapping("/aclrules")
-class ThreatController {
+@RequestMapping("/threats")
+public class ThreatController {
 
     Logger logger = LoggerFactory.getLogger(ThreatController.class);
 

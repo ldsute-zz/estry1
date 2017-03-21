@@ -1,7 +1,7 @@
 package com.ldsute.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.ldsute.entities.Threat;
+import com.ldsute.entity.Threat;
 
 import java.util.ArrayList;
 import java.util.List;

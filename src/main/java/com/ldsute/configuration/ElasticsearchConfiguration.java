@@ -21,7 +21,7 @@ import java.net.UnknownHostException;
  */
 @Configuration
 @PropertySource(value = "classpath:elasticsearch.properties")
-@EnableElasticsearchRepositories(basePackages = "com.ldsute.repositories")
+@EnableElasticsearchRepositories(basePackages = "com.ldsute.repository")
 public class ElasticsearchConfiguration {
     @Resource
     private Environment environment;

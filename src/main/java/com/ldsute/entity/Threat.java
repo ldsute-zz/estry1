@@ -1,5 +1,6 @@
-package com.ldsute.entities;
+package com.ldsute.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -14,9 +15,13 @@ import java.util.List;
 public class Threat {
     @Id
     private String id;
+    @JsonProperty("acl")
     List<Acl> aclList;
+    @JsonProperty("url")
     List<String> urlList;
+    @JsonProperty("fqdn")
     List<String> fqdnList;
+    @JsonProperty("regex")
     List<String> regexList;
 
     public Threat() {

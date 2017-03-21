@@ -1,10 +1,8 @@
-package com.ldsute;
+package com.ldsute.repository;
 
-import com.ldsute.entities.Acl;
-import com.ldsute.entities.Threat;
-import com.ldsute.repositories.ThreatRepository;
+import com.ldsute.entity.Acl;
+import com.ldsute.entity.Threat;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,19 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.allegro.tech.embeddedelasticsearch.EmbeddedElastic;
-import pl.allegro.tech.embeddedelasticsearch.IndexSettings;
 import pl.allegro.tech.embeddedelasticsearch.PopularProperties;
 
 import java.io.IOException;
 
-import static java.lang.ClassLoader.getSystemResourceAsStream;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 // Note: with Elasticsearch involved, this really becomes an integration test, not just a unit test.
-public class EsTry1ApplicationTests {
+public class ThreatRepositoryTests {
 
-	private static final Logger logger = LoggerFactory.getLogger(EsTry1ApplicationTests.class);
+	private static final Logger logger = LoggerFactory.getLogger(ThreatRepositoryTests.class);
 
 	@Autowired
 	private ThreatRepository threatRepository;
@@ -38,7 +33,7 @@ public class EsTry1ApplicationTests {
 	}
 
 	@Test
-	public void testSave() throws Exception {
+	public void testCreateSave() throws Exception {
 		Acl acl = new Acl();
 		acl.setDestIp("1.2.3.4");
 		acl.setDestIpMask(32);
